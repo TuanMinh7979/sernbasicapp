@@ -6,6 +6,7 @@ import * as actions from "../../store/actions";
 
 import "./Login.scss";
 
+import { hdlLoginApi } from "../../services/userService";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -32,10 +33,12 @@ class Login extends Component {
       password: event.target.value,
     });
   };
-
-  hdlLogin = () => {
-    console.log(this.state.password);
-    console.log(this.state.username);
+  hdlLoginBtn = async () => {
+    try {
+      await hdlLoginApi(this.state.username, this.state.password);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   render() {
@@ -50,6 +53,7 @@ class Login extends Component {
                 value={this.state.username}
                 type="text"
                 className="form-control"
+                name="username"
                 onChange={(event) => this.hdlOnChangeInput(event)}
               ></input>
             </div>
@@ -57,6 +61,7 @@ class Login extends Component {
               <label>Password</label>
               <div className="custom-input-password">
                 <input
+                  name="password"
                   value={this.state.password}
                   type={this.state.isShowPw ? "text" : "password"}
                   className="form-control"
@@ -73,7 +78,7 @@ class Login extends Component {
             </div>
 
             <div>
-              <button className="btn-login" onClick={() => this.hdlLogin()}>
+              <button className="btn-login" onClick={() => this.hdlLoginBtn()}>
                 {" "}
                 Login
               </button>

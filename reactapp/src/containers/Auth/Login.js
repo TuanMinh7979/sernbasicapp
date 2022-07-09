@@ -7,6 +7,7 @@ import * as actions from "../../store/actions";
 import "./Login.scss";
 
 import { hdlLoginApi } from "../../services/userService";
+import { userLoginSuccess } from "../../store/actions";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +16,7 @@ class Login extends Component {
       username: "",
       password: "",
       isShowPw: false,
+      errMessage: "",
     };
   }
 
@@ -34,10 +36,22 @@ class Login extends Component {
     });
   };
   hdlLoginBtn = async () => {
+    this.setState({
+      errMessage: "",
+    });
     try {
-      await hdlLoginApi(this.state.username, this.state.password);
+      let ares = await hdlLoginApi(this.state.username, this.state.password);
+      let userInfo = ares.data.userData;
+
+      this.props.userLoginSuccess(userInfo);
     } catch (e) {
-      console.error(e);
+      console.log(
+        "_____________Co loi xay ra tuc status !== 200 se di vao khoi catch nay"
+      );
+      // console.log(e.response.data.errMessage);
+      this.setState({
+        errMessage: e.response.data.errMessage,
+      });
     }
   };
 
@@ -76,7 +90,7 @@ class Login extends Component {
                 </span>
               </div>
             </div>
-
+            <div style={{ color: "red" }}> {this.state.errMessage}</div>
             <div>
               <button className="btn-login" onClick={() => this.hdlLoginBtn()}>
                 {" "}
@@ -110,9 +124,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     navigate: (path) => dispatch(push(path)),
-    adminLoginSuccess: (adminInfo) =>
-      dispatch(actions.adminLoginSuccess(adminInfo)),
-    adminLoginFail: () => dispatch(actions.adminLoginFail()),
+    // userLoginFail: () => dispatch(actions.adminLoginFail()),
+    userLoginSuccess: (userInfo) =>
+      dispatch(actions.userLoginSuccess(userInfo)),
   };
 };
 

@@ -1,5 +1,10 @@
 import db from "../models/index";
-import brcypt from "bcryptjs";
+import bcrypt from "bcryptjs";
+const salt = bcrypt.genSaltSync(10);
+let hashUserPassword = (pw) => {
+  return bcrypt.hashSync(pw, salt);
+};
+
 let hdlUserLogin = (email, pw) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -54,6 +59,69 @@ let isEmailExist = (userEmail) => {
     }
   });
 };
+
+let getUser = (userId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = "";
+      console.log(":::::", userId);
+      if (userId) {
+        if (userId === "ALL") {
+          data = await db.User.findAll({
+            attributes: {
+              exclude: ["password"],
+            },
+          });
+        } else {
+          data = await db.User.findOne({
+            where: { id: userId },
+            attributes: {
+              exclude: ["password"],
+            },
+          });
+        }
+      }
+
+      resolve(data);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let createNewUser = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let check = await isEmailExist(data.email);
+      if (check === true) {
+        resolve({
+          errCode: 1,
+          errMessage: "email is existed",
+        });
+      }
+      let pass = data.password;
+      let hashPwFromBrypt = hashUserPassword(pass);
+      await db.User.create({
+        email: data.email,
+        password: hashPwFromBrypt,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        address: data.address,
+        phoneNumber: data.phoneNumber,
+        gender: data.gender === 1 ? true : false,
+        roleId: data.roleId,
+      });
+      resolve({
+        errCode: 0,
+        errMessage: "OK",
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   hdlUserLogin: hdlUserLogin,
+  getUser: getUser,
+  createNewUser: createNewUser,
 };

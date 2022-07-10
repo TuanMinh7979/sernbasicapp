@@ -22,6 +22,25 @@ let hdlLogin = async (req, res) => {
     userData: userData.user,
   });
 };
+
+let hdlGetAllUser = async (req, res) => {
+  let id = req.query.id;
+  let users = await userService.getUser(id);
+
+  return res.status(200).json({
+    errorCode: 0,
+    errMessage: "OK",
+    users: users,
+  });
+};
+
+let hdlCreateNewUser = async (req, res) => {
+  let message = await userService.createNewUser(req.body);
+  console.log(">>>create a new user from service ", message);
+  return res.status(200).json(message);
+};
 module.exports = {
   hdlLogin: hdlLogin,
+  hdlGetAllUser: hdlGetAllUser,
+  hdlCreateNewUser: hdlCreateNewUser,
 };

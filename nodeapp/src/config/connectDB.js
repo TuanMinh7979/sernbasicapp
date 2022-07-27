@@ -2,7 +2,7 @@ const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize("sernapp", "root", null, {
   host: "localhost",
-  port: "3307",
+  port: "3306",
   dialect: "mysql"
 });
 let connectDB = async () => {

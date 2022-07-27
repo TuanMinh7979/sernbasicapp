@@ -18,7 +18,7 @@ let hdlUserLogin = (email, pw) => {
           attributes: ["email", "password", "roleId"],
         });
         if (user) {
-          let check = await brcypt.compareSync(pw, user.password);
+          let check = await bcrypt.compareSync(pw, user.password);
           if (check) {
             userData.errCode = 0;
             userData.errMessage = "OK";

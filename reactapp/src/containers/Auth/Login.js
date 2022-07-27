@@ -49,7 +49,9 @@ class Login extends Component {
         "_____________Co loi xay ra tuc status !== 200 se di vao khoi catch nay"
       );
       // console.log(e.response.data.errMessage);
+      console.log(e);
       this.setState({
+        
         errMessage: e.response.data.errMessage,
       });
     }

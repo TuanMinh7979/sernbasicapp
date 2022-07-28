@@ -54,28 +54,38 @@
     i {
       color: blue;
     }
-    .support{
+    .support {
       padding-right: 50px;
       display: flex;
       align-items: center;
       cursor: pointer;
 
-      i{
+      i {
         font-size: 15px;
         margin-right: 5px;
       }
     }
-    .language-VN{
+    .language-vi {
+      opacity: 0.2;
       cursor: pointer;
-      &.active{
-        color: orange
+      &.active {
+        opacity: 1;
+        color: orange;
+      }
+      &:hover{
+        opacity: 1;
       }
     }
-    .language-EN{
+    .language-en {
+      opacity: 0.2;
       margin: 0 10px;
       cursor: pointer;
-      &.active{
-        color: orange
+      &.active {
+        opacity: 1;
+        color: orange;
+      }
+      &:hover{
+        opacity: 1;
       }
     }
   }
@@ -135,13 +145,11 @@
   }
 
   .content-down {
-   
     height: 35%;
     border: 1px solid gray;
     display: flex;
     align-items: flex-end;
     .options {
-    
       height: 100px;
       width: 100%;
       text-align: center;

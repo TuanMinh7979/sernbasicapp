@@ -15,6 +15,7 @@
     border: 1px solid green;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     .header-logo {
       width: 60px;
       height: 50px;
@@ -40,7 +41,7 @@
     .child-content {
       .sub-title {
         font-weight: 400;
-        font-size: 0.6rem;
+        font-size: 0.8rem;
       }
     }
   }
@@ -48,10 +49,34 @@
     width: 25%;
     border: 1px solid blue;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     i {
       color: blue;
+    }
+    .support{
+      padding-right: 50px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      i{
+        font-size: 15px;
+        margin-right: 5px;
+      }
+    }
+    .language-VN{
+      cursor: pointer;
+      &.active{
+        color: orange
+      }
+    }
+    .language-EN{
+      margin: 0 10px;
+      cursor: pointer;
+      &.active{
+        color: orange
+      }
     }
   }
 }
@@ -59,15 +84,19 @@
   display: flex;
   flex-direction: column;
   height: 500px;
-  background: url("../../assets/images/bg3.jpg");
+  background-image: url("../../assets/images/bg3.jpg");
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 15px 0;
 
   .content-up {
-    
-    height: 50%;
+    background-image: linear-gradient(
+      rgba(126, 126, 126, 0.25),
+      rgba(255, 255, 255, 0.1)
+    );
+    height: 65%;
     .title1 {
       text-align: center;
       font-size: 30px;
@@ -106,18 +135,47 @@
   }
 
   .content-down {
-  
-    height: 50%;
+   
+    height: 35%;
+    border: 1px solid gray;
+    display: flex;
+    align-items: flex-end;
     .options {
-      margin-top: 100px;
+    
       height: 100px;
-      border: 1px solid red;
-
+      width: 100%;
+      text-align: center;
       display: flex;
-      .option-child{
-        border: 1px solid yellow;
-        
+      justify-content: center;
 
+      gap: 30px;
+      .option-child {
+        width: 100px;
+        border: 1px solid yellow;
+        .icon-child {
+          height: 40px;
+          width: 40px;
+          background-color: lightblue;
+          width: fit-content;
+          margin: 0 auto;
+
+          padding: 10px;
+          border-radius: 50%;
+          i {
+            color: blue;
+            font-size: 20px;
+          }
+        }
+        .text-child {
+          font-size: 16px;
+          font-weight: 500;
+          color: whitesmoke;
+          cursor: pointer;
+          &:hover {
+            color: orange;
+            font-weight: 600;
+          }
+        }
       }
     }
   }

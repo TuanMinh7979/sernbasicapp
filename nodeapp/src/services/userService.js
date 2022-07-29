@@ -15,14 +15,19 @@ let hdlUserLogin = (email, pw) => {
       if (isExist) {
         let user = await db.User.findOne({
           where: { email: email },
-          attributes: ["email", "password", "roleId"],
+          attributes: ["email", "password", "roleId", "firstName", "lastName"],
         });
         if (user) {
           let check = await bcrypt.compareSync(pw, user.password);
           if (check) {
             userData.errCode = 0;
             userData.errMessage = "OK";
-            userData.user = { email: user.email, roleId: user.roleId };
+            userData.user = {
+              email: user.email,
+              roleId: user.roleId,
+              firstName: user.firstName,
+              lastName: user.lastName,
+            };
           } else {
             userData.errCode = 3;
             userData.errMessage = "Wrong password";

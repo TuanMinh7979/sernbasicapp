@@ -12,7 +12,9 @@
     "fee": "Checkup package",
     "check-healthy": "General healthy check",
 
-    "support": "Support"
+    "support": "Support",
+
+    "welcome": "Welcome"
   },
 
   "banner": {

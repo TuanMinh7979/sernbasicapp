@@ -25,7 +25,7 @@ class UserManage extends Component {
     let users = this.state.users;
     return (
       <div className="users-container">
-        <div className="title text-center"> Manage user with Tuansuper</div>
+        <div className="title text-center"> Manage user with Hoidanit</div>
         <div className="user-table mt-3 mx-1">
           <table>
             <thead>

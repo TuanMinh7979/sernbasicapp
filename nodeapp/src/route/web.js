@@ -18,14 +18,14 @@ let initWebRoutes = (app) => {
 
   //delete
   router.get("/delete-crud", homeController.deleteCRUD);
-  
-  router.post("/api/login", userController.hdlLogin)
-  
+
+  router.post("/api/login", userController.hdlLogin);
+
   router.get("/api/get-all-user", userController.hdlGetAllUser);
-  
-  router.post("/api/create-user",userController.hdlCreateNewUser)
-  
-  
+
+  router.post("/api/create-user", userController.hdlCreateNewUser);
+
+  router.get("/allcode", userController.getAllCode);
   return app.use("/", router);
 };
 

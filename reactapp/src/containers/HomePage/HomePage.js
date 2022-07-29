@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import HomeHeader from "./HomeHeader";
 import Specialty from "./Section/Specialty";
 import MedicalFacility from "./Section/MedicalFacility";
+import OutStandingDoctor from "./Section/OutStandingDoctor";
 import "./HomePage.scss";
+import HandBook from "./Section/HandBook";
+import About from "./Section/About";
+import HomeFooter from "./HomeFooter";
 class HomePage extends Component {
   render() {
     let settings = {
@@ -20,6 +24,11 @@ class HomePage extends Component {
 
         <Specialty settings={settings}></Specialty>
         <MedicalFacility settings={settings}></MedicalFacility>
+        <OutStandingDoctor settings={settings}></OutStandingDoctor>
+        <HandBook></HandBook>
+        <About></About>
+        <HomeFooter></HomeFooter>
+
       </div>
     );
   }

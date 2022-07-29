@@ -1,45 +1,38 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import "./Specialty.scss";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import specialtyImg from "../../../assets/images/star2.jpg";
+import handbookImg from "../../../assets/images/handbook.jpg";
 
-class Specialty extends Component {
+class HandBook extends Component {
   render() {
- 
+    let settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+    };
     return (
       <div className="section-content ">
         <div className="section-header">
-          <span className="title-section"> Chuyen khoa pho bien</span>
+          <span className="title-section">Cam nang</span>
           <button className="btn-section">xem them</button>
         </div>
 
-        <Slider {...this.props.settings}>
+        <Slider {...settings}>
           <div className="item">
-            <img src={specialtyImg} />
+            <img src={handbookImg} />
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
+            <img src={handbookImg} />
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
-            <h3>asdfasdf</h3>
-          </div>
-          <div className="item">
-            <img src={specialtyImg} />
-            <h3>asdfasdf</h3>
-          </div>
-          <div className="item">
-            <img src={specialtyImg} />
-            <h3>asdfasdf</h3>
-          </div>
-          <div className="item">
-            <img src={specialtyImg} />
+            <img src={handbookImg} />
             <h3>asdfasdf</h3>
           </div>
         </Slider>
@@ -58,4 +51,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default connect(mapStateToProps, mapDispatchToProps)(HandBook);

@@ -17,7 +17,7 @@
 
   "banner": {
     "title1": "NEN TANG Y TE",
-    "title2": "CHAM SOC SUC KHOE TONG QUAT",
+    "title2": "CHAM SOC SUC KHOE TOAN DIEN",
     "child1": "Kham chuyen khoa",
     "child2": "Kham tu xa",
     "child3": "Kham tong quat",
@@ -57,7 +57,7 @@
       "system-administrator": {
         "header": "System Administrator",
         "user-manage": "User manage",
-        "product-manage": "Package manage",
+        "user-redux": "Manage user redux",
         "register-package-group-or-account": "Register service package for group/account"
       },
       "system-parameter": {

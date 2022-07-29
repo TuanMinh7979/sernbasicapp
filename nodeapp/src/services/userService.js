@@ -120,8 +120,17 @@ let createNewUser = (data) => {
     }
   });
 };
+
+let getAllCodeService = async (typeInput) => {
+  let data = await db.Allcode.findAll({
+    where: { type: typeInput },
+  });
+
+  return data;
+};
 module.exports = {
   hdlUserLogin: hdlUserLogin,
   getUser: getUser,
   createNewUser: createNewUser,
+  getAllCodeService: getAllCodeService,
 };

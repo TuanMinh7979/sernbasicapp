@@ -1,11 +1,30 @@
 .section-content {
+  &.section-about {
+    height: 300px !important;
+    border: 1px solid green !important;
+    .about-content {
+      display: flex;
+
+      .about-content-left {
+        width: 50%;
+      }
+      .about-content-right {
+        width: 50%;
+      }
+    }
+  }
+  .section-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: orange;
+  }
   margin: 0 auto;
   height: 200px;
   width: 90%;
   background: white;
   border: 1px solid black;
 
-  .specialty {
+  .item {
     display: flex !important;
     padding: 20px 20px;
     flex-direction: column;
@@ -23,4 +42,9 @@
   button {
     background-color: blue !important;
   }
+}
+
+#homeFooter {
+  text-align: center;
+  background-color: aquamarine;
 }

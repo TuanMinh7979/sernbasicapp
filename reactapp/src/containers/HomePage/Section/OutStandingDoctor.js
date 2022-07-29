@@ -1,53 +1,56 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import outstandingdoctorimg from "../../../assets/images/outdoctor.png";
 import "./Specialty.scss";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import specialtyImg from "../../../assets/images/star2.jpg";
-
-class Specialty extends Component {
+class OutStandingDoctor extends Component {
   render() {
- 
     return (
       <div className="section-content ">
         <div className="section-header">
-          <span className="title-section"> Chuyen khoa pho bien</span>
+          <span className="title-section"> Bac sy noi bat</span>
           <button className="btn-section">xem them</button>
         </div>
 
         <Slider {...this.props.settings}>
           <div className="item">
-            <img src={specialtyImg} />
+            <img src={outstandingdoctorimg} />
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
+            <img src={outstandingdoctorimg} />
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
+            <img src={outstandingdoctorimg} />
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
+            <img src={outstandingdoctorimg} />
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
+            <img src={outstandingdoctorimg} />
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
+            <img src={outstandingdoctorimg} />
             <h3>asdfasdf</h3>
           </div>
+          <div className="item">
+            <img src={outstandingdoctorimg} />
+            <h3>asdfasdf</h3>
+          </div>
+        
         </Slider>
       </div>
     );
   }
 }
-// Mỗi khi store update mapStateToProps sẽ được gọi, object mà nó trả về sẽ được merge với props của container.
+
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
@@ -58,4 +61,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor);

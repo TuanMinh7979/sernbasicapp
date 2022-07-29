@@ -39,9 +39,28 @@ let hdlCreateNewUser = async (req, res) => {
   console.log(">>>create a new user from service ", message);
   return res.status(200).json(message);
 };
+
+let getAllCode = async (req, res) => {
+  if (!req.query.type) {
+    return res.status(200).json({
+      errCode: 1,
+      errMessage: "Missing type query param",
+    });
+  }
+  try {
+    let data = await userService.getAllCodeService(req.query.type);
+    return res.status(200).json(data);
+  } catch (e) {
+    console.log("Get all code error ", e);
+    return res.status(200).json({
+      errCode: 2,
+      errMessage: "Error from server",
+    });
+  }
+};
 module.exports = {
-  
   hdlLogin: hdlLogin,
   hdlGetAllUser: hdlGetAllUser,
   hdlCreateNewUser: hdlCreateNewUser,
+  getAllCode: getAllCode,
 };

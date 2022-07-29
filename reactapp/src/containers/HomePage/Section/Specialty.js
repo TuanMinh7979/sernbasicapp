@@ -9,48 +9,40 @@ import specialtyImg from "../../../assets/images/star2.jpg";
 
 class Specialty extends Component {
   render() {
-    let settings = {
-      dots: false,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-    };
+ 
     return (
-      <div className="section-specialty">
-        <div className="specialty-container">
-          <div className="specialty-header">
-            <span className="title-section"> tieu de</span>
-            <button className="btn-section">xem them</button>
-          </div>
-
-          <Slider {...settings}>
-            <div className="specialty-body">
-              <img src={specialtyImg} />
-              <h3>asdfasdf</h3>
-            </div>
-            <div className="specialty-body">
-              <img src={specialtyImg} />
-              <h3>asdfasdf</h3>
-            </div>
-            <div className="specialty-body">
-              <img src={specialtyImg} />
-              <h3>asdfasdf</h3>
-            </div>
-            <div className="specialty-body">
-              <img src={specialtyImg} />
-              <h3>asdfasdf</h3>
-            </div>
-            <div className="specialty-body">
-              <img src={specialtyImg} />
-              <h3>asdfasdf</h3>
-            </div>
-            <div className="specialty-body">
-              <img src={specialtyImg} />
-              <h3>asdfasdf</h3>
-            </div>
-          </Slider>
+      <div className="section-content ">
+        <div className="section-header">
+          <span className="title-section"> Chuyen khoa pho bien</span>
+          <button className="btn-section">xem them</button>
         </div>
+
+        <Slider {...this.props.settings}>
+          <div className="specialty">
+            <img src={specialtyImg} />
+            <h3>asdfasdf</h3>
+          </div>
+          <div className="specialty">
+            <img src={specialtyImg} />
+            <h3>asdfasdf</h3>
+          </div>
+          <div className="specialty">
+            <img src={specialtyImg} />
+            <h3>asdfasdf</h3>
+          </div>
+          <div className="specialty">
+            <img src={specialtyImg} />
+            <h3>asdfasdf</h3>
+          </div>
+          <div className="specialty">
+            <img src={specialtyImg} />
+            <h3>asdfasdf</h3>
+          </div>
+          <div className="specialty">
+            <img src={specialtyImg} />
+            <h3>asdfasdf</h3>
+          </div>
+        </Slider>
       </div>
     );
   }

@@ -1,34 +1,33 @@
-.section-specialty {
-  width: 90%;
-  margin: 0 auto;
+// .section-specialty {
+//   width: 90%;
+//   margin: 0 auto;
 
-  border: 1px solid grey;
-  .specialty-container {
-    margin: 0 auto;
-    height: 200px;
+//   border: 1px solid grey;
+//   .specialty-container {
+//     margin: 0 auto;
+//     height: 200px;
 
-    background: white;
-    // border: 1px solid black;
+//     background: white;
+//     // border: 1px solid black;
 
-    .specialty-body {
-      display: flex !important;
-      padding: 20px 20px;
-      flex-direction: column;
+//     .specialty-body {
+//       display: flex !important;
+//       padding: 20px 20px;
+//       flex-direction: column;
 
-      img {
-        height: 100px;
-        border: 1px solid green;
-      }
-    }
-    .btn-section {
-      float: right;
-      color: white;
-    }
+//       img {
+//         height: 100px;
+//         border: 1px solid green;
+//       }
+//     }
+//     .btn-section {
+//       float: right;
+//       color: white;
+//     }
 
-    button {
-      background-color: blue !important;
-    }
-  }
-}
+//     button {
+//       background-color: blue !important;
+//     }
+//   }
+// }
 
-//reset slick slider

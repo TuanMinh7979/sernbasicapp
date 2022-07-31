@@ -1,0 +1,18 @@
+.preview-img-container {
+  .label-upload {
+    padding: 5px;
+    border-radius: 3px;
+    background-color: lightblue;
+    cursor: pointer;
+    color: blue;
+  }
+  .preview-image {
+    height: 100px;
+    width: 100%;
+    border: 1px solid blue;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}

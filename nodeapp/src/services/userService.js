@@ -106,6 +106,7 @@ let createNewUser = (data) => {
       }
       let pass = data.password;
       let hashPwFromBrypt = hashUserPassword(pass);
+      console.log(">>>>>>>>>>>>>>.data from node app", data);
       await db.User.create({
         email: data.email,
         password: hashPwFromBrypt,
@@ -115,6 +116,7 @@ let createNewUser = (data) => {
         phoneNumber: data.phoneNumber,
         gender: data.gender === 1 ? true : false,
         roleId: data.roleId,
+        positionId: data.positionId,
       });
       resolve({
         errCode: 0,
@@ -133,8 +135,6 @@ let getAllCodeService = async (typeInput) => {
 
   return data;
 };
-
-
 
 module.exports = {
   hdlUserLogin: hdlUserLogin,

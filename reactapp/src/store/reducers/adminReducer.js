@@ -3,6 +3,7 @@ import actionTypes from "../actions/actionTypes";
 const initContentOfConfirmModal = {};
 
 const initialState = {
+  isLoadingGender: false,
   genders: [],
   roles: [],
   positions: [],
@@ -11,22 +12,47 @@ const initialState = {
 const adminReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_GENDER_START:
-      // console.log("From reducer start................<><><><><><><>", action);
+      let cpState = { ...state };
+      cpState.isLoadingGender = true;
       return {
         ...state,
       };
+
     case actionTypes.FETCH_GENDER_SUCCESS:
-      // console.log("From reducer success................<><><><><><><>", action);
-      let cpState = { ...state };
-      cpState.genders = action.data;
+      let cpState1 = { ...state };
+      cpState1.isLoadingGender = false;
+      cpState1.genders = action.data;
       return {
-        ...cpState,
+        ...cpState1,
       };
     case actionTypes.FETCH_GENDER_FAILED:
-      // console.log("From reducer failed.................<><><><><><><>", action);
+      let cpState2 = { ...state };
+      cpState2.isLoadingGender = false;
+      return {
+        ...cpState2,
+      };
+
+    case actionTypes.FETCH_POSITION_SUCCESS:
+      state.positions = action.data;
       return {
         ...state,
       };
+    case actionTypes.FETCH_POSITION_FAILED:
+      state.positions = [];
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ROLE_SUCCESS:
+      state.roles = action.data;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ROLE_FAILED:
+      state.roles = [];
+      return {
+        ...state,
+      };
+
     default:
       return state;
   }

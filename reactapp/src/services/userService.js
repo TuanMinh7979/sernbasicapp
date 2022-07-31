@@ -10,4 +10,8 @@ const getUser = (userId) => {
 const getAllCodeService = (inpType) => {
   return axios.get(`/api/allcode?type=${inpType}`);
 };
-export { hdlLoginApi, getUser, getAllCodeService };
+
+const createUserService = (data) => {
+  return axios.post("/api/create-user", data);
+};
+export { hdlLoginApi, getUser, getAllCodeService, createUserService };

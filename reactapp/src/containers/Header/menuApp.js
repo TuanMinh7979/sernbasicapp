@@ -11,7 +11,7 @@ export const adminMenu = [
         name: "menu.admin.crud-redux",
         link: "/system/user-redux",
       },
-      { name: "Exam", link: "/system/user-exam" },
+      { name: "menu.admin.exam", link: "/system/user-exam" },
     ],
   },
   {

@@ -54,7 +54,9 @@
       "manage-specialty": "Quản lý chuyên khoa",
 
       "handbook": "Cẩm nang",
-      "manage-handbook": "Quản lý cẩm nang"
+      "manage-handbook": "Quản lý cẩm nang",
+
+      "exam": "exam"
     }
   },
   "manage-user": {

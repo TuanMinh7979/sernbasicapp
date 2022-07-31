@@ -3,6 +3,7 @@
     "react-slick": "^0.28.1"
   },
   "dependencies": {
+    "react-image-lightbox": "^5.1.1",
     "slick-carousel": "^1.8.1"
   }
 }

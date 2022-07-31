@@ -6,4 +6,8 @@ const hdlLoginApi = (email, password) => {
 const getUser = (userId) => {
   return axios.get(`/api/get-all-user?id=${userId}`);
 };
-export { hdlLoginApi, getUser };
+
+const getAllCodeService = (inpType) => {
+  return axios.get(`/api/allcode?type=${inpType}`);
+};
+export { hdlLoginApi, getUser, getAllCodeService };

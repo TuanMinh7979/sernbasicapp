@@ -1,0 +1,40 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 2px solid #345ae6;
+  text-align: left;
+  padding: 8px;
+  color: black;
+}
+
+tr:nth-child(even) {
+  background-color: lightcyan;
+}
+tr:nth-child(odd) {
+  background-color: lightgreen;
+}
+.btn-edit {
+  width: 50px;
+  border: none;
+  background: transparent;
+  color: orange;
+  &:hover {
+    background-color: transparent !important;
+    color: orange !important;
+  }
+}
+.btn-delete {
+  width: 50px;
+  border: none;
+  background: transparent;
+  color: red;
+  &:hover {
+    background-color: transparent !important;
+    color: red !important;
+  }
+}

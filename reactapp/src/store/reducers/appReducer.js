@@ -16,6 +16,7 @@ const initialState = {
   },
 };
 
+
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.APP_START_UP_COMPLETE:
@@ -23,6 +24,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         started: true,
       };
+      
     case actionTypes.SET_CONTENT_OF_CONFIRM_MODAL:
       return {
         ...state,
@@ -32,7 +34,6 @@ const appReducer = (state = initialState, action) => {
         },
       };
     case actionTypes.CHANGE_LANGUAGE:
-      console.log("ok check redux", action);
       return {
         ...state,
         language: action.language

@@ -69,7 +69,7 @@ let getUser = (userId) => {
   return new Promise(async (resolve, reject) => {
     try {
       let data = "";
-      console.log(":::::", userId);
+
       if (userId) {
         if (userId === "ALL") {
           data = await db.User.findAll({

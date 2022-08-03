@@ -1,6 +1,7 @@
 import actionTypes from "./actionTypes";
-import { getAllCodeService } from "../../services/userService";
+import { getAllCodeService, getUser } from "../../services/userService";
 import { createUserService } from "../../services/userService";
+// import {}
 export const fetchGenderStart = () => {
   return async (dispatch, getState) => {
     try {
@@ -87,6 +88,31 @@ export const createUserAction = (data) => {
     }
   };
 };
+
+export const fetchAllUserStart = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getUser("ALL");
+      if (res) {
+        dispatch(fetchAllUserSuccess(res.data.users));
+        // dispatch(fetchAllUserStart());  //khi bat len thi se bi loop render vo han
+      } else {
+        dispatch(fetchRoleFailed());
+      }
+    } catch (e) {
+      fetchRoleFailed();
+      console.log(e);
+    }
+  };
+};
+export const fetchAllUserSuccess = (data) => ({
+  type: actionTypes.FETCH_ALL_USER_SUCCESS,
+  users: data,
+});
+export const fetchAllUserFailed = () => ({
+  type: actionTypes.FETCH_ALL_USER_FAILED,
+});
+
 export const saveUserSuccess = () => ({
   type: actionTypes.CREATE_USER_SUCCESS,
 });

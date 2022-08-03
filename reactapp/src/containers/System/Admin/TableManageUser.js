@@ -12,19 +12,31 @@ class TableManageUser extends Component {
     };
   }
   componentDidMount = () => {
+    console.log("TABLEMANAGE DIDMOUT AND FETCH USER");
     this.props.fetchUserRedux();
   };
   componentDidUpdate = (prevProps, prevState, snapshot) => {
-    console.log("_________________TABLE MANAGE USER COMPONENTDIDUPDATE")
+    console.log("_________________TABLE MANAGE USER COMPONENTDIDUPDATE");
+    console.log(
+      "________________>>>old list length:",
+      prevProps.listUserRedux.length
+    );
     if (prevProps.listUserRedux !== this.props.listUserRedux) {
+      console.log(
+        "________________>>>new list length:",
+        this.props.listUserRedux.length
+      );
       this.setState({
         userRedux: this.props.listUserRedux,
       });
     }
   };
+  hdlDeleteUser = (id) => {
+    this.props.deleteAUserRedux(id);
+  };
 
   render() {
-    console.log("_________________TABLE MANAGE USER RERENDER")
+    console.log("_________________TABLE MANAGE USER RERENDER");
     let usersData = this.state.userRedux;
     return (
       <table>
@@ -42,7 +54,7 @@ class TableManageUser extends Component {
             usersData.length > 0 &&
             usersData.map((item, index) => {
               return (
-                <tr key= {index}>
+                <tr key={index}>
                   <td>{item.email}</td>
                   <td>{item.firstName}</td>
                   <td>{item.lastName}</td>
@@ -53,7 +65,10 @@ class TableManageUser extends Component {
                       <i className="fas fa-pencil-alt"></i>
                     </button>
                     <span> </span>
-                    <button className="btn-delete">
+                    <button
+                      onClick={() => this.hdlDeleteUser(item.id)}
+                      className="btn-delete"
+                    >
                       <i className="fas fa-trash"></i>
                     </button>
                   </td>
@@ -67,12 +82,14 @@ class TableManageUser extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log("TABLEMANAGE: Map list user to props");
   return { listUserRedux: state.admin.users };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchUserRedux: () => dispatch(actions.fetchAllUserStart()),
+    deleteAUserRedux: (id) => dispatch(actions.deleteUserAction(id)),
   };
 };
 

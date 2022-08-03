@@ -136,9 +136,20 @@ let getAllCodeService = async (typeInput) => {
   return data;
 };
 
+let deleteAUserService = (idToDel) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await db.User.destroy({ where: { id: idToDel }, truncate: false });
+      resolve(true);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   hdlUserLogin: hdlUserLogin,
   getUser: getUser,
   createNewUser: createNewUser,
   getAllCodeService: getAllCodeService,
+  deleteAUserService: deleteAUserService,
 };

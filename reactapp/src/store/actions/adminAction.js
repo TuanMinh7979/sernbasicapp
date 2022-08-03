@@ -1,7 +1,9 @@
 import actionTypes from "./actionTypes";
 import { getAllCodeService, getUser } from "../../services/userService";
 import { createUserService } from "../../services/userService";
+import { deleteUserService } from "../../services/userService";
 // import {}
+import { toast } from "react-toastify";
 export const fetchGenderStart = () => {
   return async (dispatch, getState) => {
     try {
@@ -74,13 +76,31 @@ export const fetchRoleStart = () => {
 };
 
 export const createUserAction = (data) => {
-  console.log("A:CREATEUSERACTION")
   return async (dispatch, getState) => {
+    console.log("A:CREATEUSERACTION");
     try {
       let res = await createUserService(data);
       if (res) {
+        toast.success("create new user success");
         dispatch(saveUserSuccess());
-        dispatch(fetchAllUserStart());//specical dispatch after create new user
+        dispatch(fetchAllUserStart()); //specical dispatch after create new user
+      } else {
+        dispatch(saveUserFailed());
+      }
+    } catch (e) {
+      saveUserFailed();
+      console.log(e);
+    }
+  };
+};
+export const deleteUserAction = (userId) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await deleteUserService(userId);
+      if (res) {
+        toast.success("delete user success");
+        dispatch(deleteUserSuccess());
+        dispatch(fetchAllUserStart()); //specical dispatch after create new user
       } else {
         dispatch(saveUserFailed());
       }
@@ -91,9 +111,16 @@ export const createUserAction = (data) => {
   };
 };
 
+export const deleteUserSuccess = () => ({
+  type: actionTypes.DELETE_USER_SUCCESS,
+});
+export const deleteUserFailed = () => ({
+  type: actionTypes.DELETE_USER_FAILED,
+});
+
 export const fetchAllUserStart = () => {
-  console.log("A: FETALLUSERSTART ACTION")
   return async (dispatch, getState) => {
+    console.log("A: FETALLUSERSTART ACTION");
     try {
       let res = await getUser("ALL");
       if (res) {

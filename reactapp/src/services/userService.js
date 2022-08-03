@@ -14,4 +14,18 @@ const getAllCodeService = (inpType) => {
 const createUserService = (data) => {
   return axios.post("/api/create-user", data);
 };
-export { hdlLoginApi, getUser, getAllCodeService, createUserService };
+
+const deleteUserService = (userId) => {
+  return axios.post("/api/delete-user", {
+    data: {
+      id: userId,
+    },
+  });
+};
+export {
+  hdlLoginApi,
+  getUser,
+  getAllCodeService,
+  deleteUserService,
+  createUserService,
+};

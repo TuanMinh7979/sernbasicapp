@@ -23,7 +23,6 @@ let hdlLogin = async (req, res) => {
   });
 };
 
-
 let hdlGetAllUser = async (req, res) => {
   let id = req.query.id;
   let users = await userService.getUser(id);
@@ -59,9 +58,31 @@ let getAllCode = async (req, res) => {
     });
   }
 };
+
+let deleteAUserController=async (req, res) => {
+  if (!req.body.data) {
+    return res.status(200).json({
+      errCode: 1,
+      errMessage: "Missing data in req.body",
+    });
+  }
+  try {
+    let data = await userService.deleteAUserService(req.body.data.id);
+    return res.status(200).json(data);
+  } catch (e) {
+    console.log("Delete error ", e);
+    return res.status(200).json({
+      errCode: 2,
+      errMessage: "Error from server",
+    });
+  }
+};
+
+
 module.exports = {
   hdlLogin: hdlLogin,
   hdlGetAllUser: hdlGetAllUser,
   hdlCreateNewUser: hdlCreateNewUser,
   getAllCode: getAllCode,
+  deleteAUserController: deleteAUserController
 };

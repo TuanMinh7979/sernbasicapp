@@ -31,7 +31,9 @@ class UserRedux extends Component {
   state = {};
 
   componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log(".....USER REDUX COMPONENT DID UPDATE DUOC GOI")
     if (prevProps.genderRedux !== this.props.genderRedux) {
+      console.log("---vao 1")
       let arrGender = this.props.genderRedux;
       this.setState({
         genderArray: this.props.genderRedux,
@@ -39,6 +41,7 @@ class UserRedux extends Component {
       });
     }
     if (prevProps.positionRedux !== this.props.positionRedux) {
+      console.log("---vao 2")
       let arrPosition = this.props.positionRedux;
       this.setState({
         positionArray: this.props.positionRedux,
@@ -47,6 +50,7 @@ class UserRedux extends Component {
       });
     }
     if (prevProps.roleRedux !== this.props.roleRedux) {
+      console.log("---vao 3")
       let arrRole = this.props.roleRedux;
 
       this.setState({
@@ -56,6 +60,8 @@ class UserRedux extends Component {
     }
 
     if (prevProps.listUserRedux !== this.props.listUserRedux) {
+    
+      console.log("---vao 4")
       this.setState({
         email: "",
         password:"",
@@ -135,6 +141,7 @@ class UserRedux extends Component {
   };
 
   render() {
+    console.log(".....USER REDUX REREDNER")
     let genders = this.state.genderArray;
     let positions = this.state.positionArray;
     let roles = this.state.roleArray;
@@ -320,7 +327,7 @@ const mapStateToProps = (state) => {
     genderRedux: state.admin.genders,
     positionRedux: state.admin.positions,
     roleRedux: state.admin.roles,
-    listUserRedux: state.admin.users
+    // listUserRedux: state.admin.users
   };
 };
 

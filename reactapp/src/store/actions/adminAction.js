@@ -74,6 +74,7 @@ export const fetchRoleStart = () => {
 };
 
 export const createUserAction = (data) => {
+  console.log("A:CREATEUSERACTION")
   return async (dispatch, getState) => {
     try {
       let res = await createUserService(data);
@@ -91,11 +92,12 @@ export const createUserAction = (data) => {
 };
 
 export const fetchAllUserStart = () => {
+  console.log("A: FETALLUSERSTART ACTION")
   return async (dispatch, getState) => {
     try {
       let res = await getUser("ALL");
       if (res) {
-        dispatch(fetchAllUserSuccess(res.data.users));
+        dispatch(fetchAllUserSuccess(res.data.users.reverse()));
       } else {
         dispatch(fetchRoleFailed());
       }

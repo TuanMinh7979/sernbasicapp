@@ -15,7 +15,7 @@ class TableManageUser extends Component {
     this.props.fetchUserRedux();
   };
   componentDidUpdate = (prevProps, prevState, snapshot) => {
-    console.log(">>>run after component render")
+    console.log("_________________TABLE MANAGE USER COMPONENTDIDUPDATE")
     if (prevProps.listUserRedux !== this.props.listUserRedux) {
       this.setState({
         userRedux: this.props.listUserRedux,
@@ -24,7 +24,7 @@ class TableManageUser extends Component {
   };
 
   render() {
-    console.log(">>>Component rerender")
+    console.log("_________________TABLE MANAGE USER RERENDER")
     let usersData = this.state.userRedux;
     return (
       <table>

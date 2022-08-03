@@ -79,6 +79,7 @@ export const createUserAction = (data) => {
       let res = await createUserService(data);
       if (res) {
         dispatch(saveUserSuccess());
+        dispatch(fetchAllUserStart());//specical dispatch after create new user
       } else {
         dispatch(saveUserFailed());
       }
@@ -95,7 +96,6 @@ export const fetchAllUserStart = () => {
       let res = await getUser("ALL");
       if (res) {
         dispatch(fetchAllUserSuccess(res.data.users));
-        // dispatch(fetchAllUserStart());  //khi bat len thi se bi loop render vo han
       } else {
         dispatch(fetchRoleFailed());
       }

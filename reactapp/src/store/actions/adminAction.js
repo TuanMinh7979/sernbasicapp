@@ -2,6 +2,7 @@ import actionTypes from "./actionTypes";
 import { getAllCodeService, getUser } from "../../services/userService";
 import { createUserService } from "../../services/userService";
 import { deleteUserService } from "../../services/userService";
+import { updateUserService } from "../../services/userService";
 // import {}
 import { toast } from "react-toastify";
 export const fetchGenderStart = () => {
@@ -102,7 +103,7 @@ export const deleteUserAction = (userId) => {
         dispatch(deleteUserSuccess());
         dispatch(fetchAllUserStart()); //specical dispatch after create new user
       } else {
-        dispatch(saveUserFailed());
+        dispatch(deleteUserFailed());
       }
     } catch (e) {
       saveUserFailed();
@@ -110,6 +111,31 @@ export const deleteUserAction = (userId) => {
     }
   };
 };
+export const EditUserAction = (user) => {
+  console.log("__________________eDITUSERACTION_______________.......")
+  return async (dispatch, getState) => {
+    try {
+      let res = await updateUserService(user);
+      if (res) {
+        toast.success("update user success");
+        dispatch(updateUserSuccess());
+        dispatch(fetchAllUserStart()); //specical dispatch after create new user
+      } else {
+        dispatch(updateUserFailed());
+      }
+    } catch (e) {
+      saveUserFailed();
+      console.log(e);
+    }
+  };
+};
+
+export const updateUserSuccess = () => ({
+  type: actionTypes.UPDATE_USER_SUCCESS,
+});
+export const updateUserFailed = () => ({
+  type: actionTypes.UPDATE_USER_FAILED,
+});
 
 export const deleteUserSuccess = () => ({
   type: actionTypes.DELETE_USER_SUCCESS,

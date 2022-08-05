@@ -59,7 +59,7 @@ let getAllCode = async (req, res) => {
   }
 };
 
-let deleteAUserController=async (req, res) => {
+let deleteAUserController = async (req, res) => {
   if (!req.body.data) {
     return res.status(200).json({
       errCode: 1,
@@ -78,11 +78,25 @@ let deleteAUserController=async (req, res) => {
   }
 };
 
+let updateAUserController = async (req, res) => {
+  console.log("__________________UPDATE_______________.......")
+  try {
+    let data = await userService.updateUserService(req.body.data);
+    return res.status(200).json(data);
+  } catch (e) {
+    console.log("Update error ", e);
+    return res.status(200).json({
+      errCode: 2,
+      errMessage: "Error from server",
+    });
+  }
+};
 
 module.exports = {
   hdlLogin: hdlLogin,
   hdlGetAllUser: hdlGetAllUser,
   hdlCreateNewUser: hdlCreateNewUser,
   getAllCode: getAllCode,
-  deleteAUserController: deleteAUserController
+  deleteAUserController: deleteAUserController,
+  updateAUserController, updateAUserController
 };

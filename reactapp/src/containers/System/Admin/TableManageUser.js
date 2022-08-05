@@ -35,6 +35,11 @@ class TableManageUser extends Component {
     this.props.deleteAUserRedux(id);
   };
 
+  hdlEditUserInChild = (user) => {
+    console.log("hdledit from child")
+    this.props.hdlEditUser(user);
+  };
+
   render() {
     console.log("_________________TABLE MANAGE USER RERENDER");
     let usersData = this.state.userRedux;
@@ -61,7 +66,10 @@ class TableManageUser extends Component {
                   <td>{item.address}</td>
 
                   <td>
-                    <button className="btn-edit">
+                    <button
+                      onClick={() => this.hdlEditUserInChild(item)}
+                      className="btn-edit"
+                    >
                       <i className="fas fa-pencil-alt"></i>
                     </button>
                     <span> </span>

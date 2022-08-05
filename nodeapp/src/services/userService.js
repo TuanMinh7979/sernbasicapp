@@ -1,5 +1,6 @@
 import db from "../models/index";
 import bcrypt from "bcryptjs";
+
 const salt = bcrypt.genSaltSync(10);
 let hashUserPassword = (pw) => {
   return bcrypt.hashSync(pw, salt);
@@ -146,10 +147,64 @@ let deleteAUserService = (idToDel) => {
     }
   });
 };
+
+let updateUserService = async (data) => {
+  console.log("__________________UPDATE_service______________.......", data);
+  let userData = data.user;
+  let userId = userData.id;
+  try {
+    console.log(">>>>>>>>>>>>>>>>>>>userid ", userId);
+    let user = await db.User.findOne({ where: { id: userId } });
+
+    if (user) {
+      user.firstName = userData.firstName;
+      user.lastName = userData.lastName;
+      user.address = userData.address;
+      user.phoneNumber = userData.phoneNumber;
+      user.gender = userData.gender;
+      user.roleId = userData.role;
+      user.positionId = userData.position;
+
+      await db.User.update({ ...user }, { where: { id: userId } });
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+// let updateUserService = (data) => {
+//   let data = data.user;
+//   let userId = data.id;
+
+//   return new Promise(async (resolve, reject) => {
+//     try {
+//       let user = await db.User.findOne({ where: { id: userId } });
+
+//       if (user) {
+//         user.firstName = data.firstName;
+//         user.lastName = data.lastName;
+//         user.address = data.address;
+//         user.phoneNumber = data.phoneNumber;
+//         user.gender = data.gender;
+//         user.roleId = data.role;
+//         user.positionId = data.position;
+
+//         await user.save();
+//         resolve(true);
+//       } else {
+//         reject("some thing wrong 1");
+//       }
+//     } catch (e) {
+//       console.error(e);
+//       reject("some thing wrong 2");
+//     }
+//   });
+// };
 module.exports = {
   hdlUserLogin: hdlUserLogin,
   getUser: getUser,
   createNewUser: createNewUser,
   getAllCodeService: getAllCodeService,
   deleteAUserService: deleteAUserService,
+  updateUserService: updateUserService,
 };

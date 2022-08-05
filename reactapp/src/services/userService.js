@@ -22,10 +22,18 @@ const deleteUserService = (userId) => {
     },
   });
 };
+const updateUserService = (user) => {
+  return axios.post("/api/update-user", {
+    data: {
+      user,
+    },
+  });
+};
 export {
   hdlLoginApi,
   getUser,
   getAllCodeService,
   deleteUserService,
   createUserService,
+  updateUserService
 };

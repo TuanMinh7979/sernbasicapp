@@ -118,6 +118,7 @@ let createNewUser = (data) => {
         gender: data.gender === 1 ? true : false,
         roleId: data.roleId,
         positionId: data.positionId,
+        image: data.avatar
       });
       resolve({
         errCode: 0,
@@ -148,6 +149,36 @@ let deleteAUserService = (idToDel) => {
   });
 };
 
+// let updateUserService = (data) => {
+//   data = data.user;
+//   let userId = data.id;
+
+//   return new Promise(async (resolve, reject) => {
+//     try {
+//       let user = await db.User.findOne({ where: { id: userId } });
+
+//       if (user) {
+//         user.firstName = data.firstName;
+//         user.lastName = data.lastName;
+//         user.address = data.address;
+//         user.phoneNumber = data.phoneNumber;
+
+//         user.gender = data.gender;
+//         user.roleId = data.role;
+//         user.positionId = data.position;
+
+//         await user.save();
+//         resolve(true);
+//       } else {
+//         reject("some thing wrong 1");
+//       }
+//     } catch (e) {
+//       console.error(e);
+//       reject("some thing wrong 2");
+//     }
+//   });
+// };
+
 let updateUserService = async (data) => {
   console.log("__________________UPDATE_service______________.......", data);
   let userData = data.user;
@@ -164,7 +195,8 @@ let updateUserService = async (data) => {
       user.gender = userData.gender;
       user.roleId = userData.role;
       user.positionId = userData.position;
-
+      user.image= userData.avatar
+      
       await db.User.update({ ...user }, { where: { id: userId } });
     }
   } catch (e) {
@@ -172,34 +204,6 @@ let updateUserService = async (data) => {
   }
 };
 
-// let updateUserService = (data) => {
-//   let data = data.user;
-//   let userId = data.id;
-
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       let user = await db.User.findOne({ where: { id: userId } });
-
-//       if (user) {
-//         user.firstName = data.firstName;
-//         user.lastName = data.lastName;
-//         user.address = data.address;
-//         user.phoneNumber = data.phoneNumber;
-//         user.gender = data.gender;
-//         user.roleId = data.role;
-//         user.positionId = data.position;
-
-//         await user.save();
-//         resolve(true);
-//       } else {
-//         reject("some thing wrong 1");
-//       }
-//     } catch (e) {
-//       console.error(e);
-//       reject("some thing wrong 2");
-//     }
-//   });
-// };
 module.exports = {
   hdlUserLogin: hdlUserLogin,
   getUser: getUser,

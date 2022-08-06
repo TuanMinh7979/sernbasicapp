@@ -7,7 +7,8 @@ import "./UserRedux.scss";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import TableManageUser from "./TableManageUser";
-import { CRUD_ACTIONS } from "../../../utils";
+import { CRUD_ACTIONS, CommonUtils } from "../../../utils";
+
 class UserRedux extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +29,7 @@ class UserRedux extends Component {
       role: "",
       avatar: "",
       userId: "",
-      action:""
+      action: "",
     };
   }
   state = {};
@@ -95,14 +96,16 @@ class UserRedux extends Component {
     // } catch (e) {}
   }
 
-  hdlOnChangeImage = (event) => {
+  hdlOnChangeImage = async (event) => {
     let file = event.target.files[0];
     if (file) {
+      let base64file = await CommonUtils.getBase64(file);
+      console.log("__________________BASE 64 IMAGE", base64file);
       let objectURL = URL.createObjectURL(file);
 
       this.setState({
         previewImgUrl: objectURL,
-        avatar: file,
+        avatar: base64file,
       });
     }
   };
@@ -142,6 +145,7 @@ class UserRedux extends Component {
         gender: this.state.gender === "M" ? 1 : 0,
         roleId: this.state.role,
         positionId: this.state.position,
+        avatar: this.state.avatar,
       });
     } else if (action === CRUD_ACTIONS.UPDATE) {
       // console.log("__________________UPDATE USER REDUX_______________.......id in state:::" ,this.state.userId);
@@ -156,6 +160,8 @@ class UserRedux extends Component {
         gender: this.state.gender == 1 ? "M" : "F",
         roleId: this.state.role,
         positionId: this.state.position,
+        avatar: this.state.avatar,
+
       });
     }
   };
@@ -306,7 +312,7 @@ class UserRedux extends Component {
                     genders.map((item, index) => {
                       return (
                         <option key={index} value={item.key}>
-                          {curLanguage == "vi" ? item.valueVi : item.valueEn}
+                          {curLanguage === "vi" ? item.valueVi : item.valueEn}
                         </option>
                       );
                     })}

@@ -152,8 +152,8 @@ export const fetchAllUserStart = () => {
       let res = await getUser("ALL");
 
       //additional
-      let res1= await getTopDoctorHome("")
-      console.log("*************CHECKRESPONSE", res1)
+      // let res1= await getTopDoctorHome("")
+      // console.log("*************CHECKRESPONSE", res1)
       if (res) {
         dispatch(fetchAllUserSuccess(res.data.users.reverse()));
       } else {
@@ -165,6 +165,16 @@ export const fetchAllUserStart = () => {
     }
   };
 };
+
+
+//EXAMPLE FUNCTION IN ACTION CAN PASS SOME CURRENT BUG
+export const fetchTopDoctor = () => {
+  return async (dispatch, getState) => {
+    try {
+    } catch (e) {}
+  };
+};
+//EXAMPLE FUNCTION IN ACTION CAN PASS SOME CURRENT BUG
 export const fetchAllUserSuccess = (data) => ({
   type: actionTypes.FETCH_ALL_USER_SUCCESS,
   users: data,

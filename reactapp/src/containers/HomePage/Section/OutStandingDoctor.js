@@ -5,8 +5,14 @@ import outstandingdoctorimg from "../../../assets/images/outdoctor.png";
 import "./Specialty.scss";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
+
 import "slick-carousel/slick/slick-theme.css";
+import * as actions from "../../../store/actions";
 class OutStandingDoctor extends Component {
+  componentDidMount = () => {
+    this.props.fetchTopDoctor();
+  };
+
   render() {
     return (
       <div className="section-content ">
@@ -20,7 +26,7 @@ class OutStandingDoctor extends Component {
             <img src={outstandingdoctorimg} />
             <h3>asdfasdf</h3>
           </div>
-          <div className="item">
+          {/* <div className="item">
             <img src={outstandingdoctorimg} />
             <h3>asdfasdf</h3>
           </div>
@@ -43,8 +49,7 @@ class OutStandingDoctor extends Component {
           <div className="item">
             <img src={outstandingdoctorimg} />
             <h3>asdfasdf</h3>
-          </div>
-        
+          </div> */}
         </Slider>
       </div>
     );
@@ -58,7 +63,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    fetchTopDoctor: () => dispatch(actions.fetchTopDoctor()),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor);

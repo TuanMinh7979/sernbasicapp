@@ -3,6 +3,7 @@ import { getAllCodeService, getUser } from "../../services/userService";
 import { createUserService } from "../../services/userService";
 import { deleteUserService } from "../../services/userService";
 import { updateUserService } from "../../services/userService";
+import { getTopDoctorHome } from "../../services/userService";
 // import {}
 import { toast } from "react-toastify";
 export const fetchGenderStart = () => {
@@ -112,7 +113,7 @@ export const deleteUserAction = (userId) => {
   };
 };
 export const EditUserAction = (user) => {
-  console.log("__________________eDITUSERACTION_______________.......")
+  console.log("__________________eDITUSERACTION_______________.......");
   return async (dispatch, getState) => {
     try {
       let res = await updateUserService(user);
@@ -149,6 +150,10 @@ export const fetchAllUserStart = () => {
     console.log("A: FETALLUSERSTART ACTION");
     try {
       let res = await getUser("ALL");
+
+      //additional
+      let res1= await getTopDoctorHome("")
+      console.log("*************CHECKRESPONSE", res1)
       if (res) {
         dispatch(fetchAllUserSuccess(res.data.users.reverse()));
       } else {

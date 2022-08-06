@@ -29,11 +29,16 @@ const updateUserService = (user) => {
     },
   });
 };
+
+const getTopDoctorHome = (limit) => {
+  return axios.get(`/api/top-doctor-home?limit=${limit}`);
+};
 export {
   hdlLoginApi,
   getUser,
   getAllCodeService,
   deleteUserService,
   createUserService,
-  updateUserService
+  updateUserService,
+  getTopDoctorHome
 };

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useReducer } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import { getAllCodeService } from "../../../services/userService";
@@ -8,6 +8,7 @@ import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import TableManageUser from "./TableManageUser";
 import { CRUD_ACTIONS, CommonUtils } from "../../../utils";
+import { isBuffer, isError } from "lodash";
 
 class UserRedux extends Component {
   constructor(props) {
@@ -77,6 +78,7 @@ class UserRedux extends Component {
         role: "",
         avatar: "",
         action: CRUD_ACTIONS.CREATE,
+        previewImgUrl:""
       });
     }
   }
@@ -157,17 +159,22 @@ class UserRedux extends Component {
         lastName: this.state.lastName,
         address: this.state.address,
         phoneNumber: this.state.phoneNumber,
-        gender: this.state.gender == 1 ? "M" : "F",
+        gender: this.state.gender === 1 ? "M" : "F",
         roleId: this.state.role,
         positionId: this.state.position,
         avatar: this.state.avatar,
-
       });
     }
   };
 
   hdlEditUser = (user) => {
     console.log("update user  info in pareeet: ,", user);
+    let imageBase64 = "";
+    if (user.image) {
+      imageBase64 = new Buffer(user.image, "base64").toString('binary');
+      
+    }
+
     this.setState({
       email: user.email,
       password: "hardcode",
@@ -182,6 +189,7 @@ class UserRedux extends Component {
       avatar: "",
       action: CRUD_ACTIONS.UPDATE,
       userId: user.id,
+      previewImgUrl: imageBase64,
     });
   };
   render() {

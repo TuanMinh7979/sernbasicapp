@@ -9,6 +9,8 @@ const initialState = {
   positions: [],
 
   users: [],
+  topDoctors: [],
+  //controllerBE-> adminAction->adminReucer(optional)(dua vo globel state) after that component vo state.admin loi ra sai
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -65,6 +67,17 @@ const adminReducer = (state = initialState, action) => {
         ...state,
       };
 
+    case actionTypes.FETCH_DOCTOR_SUCCESS:
+      state.topDoctors = action.topDoctors;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_DOCTOR_FAILED:
+      state.topDoctors = [];
+      return {
+        ...state,
+      };
+ 
     default:
       return state;
   }

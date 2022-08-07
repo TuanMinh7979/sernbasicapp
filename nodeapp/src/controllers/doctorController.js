@@ -8,7 +8,7 @@ let getTopDoctorHome =async (req, res) => {
    return res.status(200).json({
     errorCode: 0,
     errMessage: "OK",
-    doctors: doctors,
+    topDoctors: doctors,
   });
   
   } catch (e) {

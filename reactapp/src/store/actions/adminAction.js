@@ -79,8 +79,9 @@ export const fetchRoleStart = () => {
 
 export const createUserAction = (data) => {
   return async (dispatch, getState) => {
-    console.log("A:CREATEUSERACTION");
+  
     try {
+      console.log("DATA in action", data)
       let res = await createUserService(data);
       if (res) {
         toast.success("create new user success");
@@ -166,12 +167,26 @@ export const fetchAllUserStart = () => {
   };
 };
 
-
 //EXAMPLE FUNCTION IN ACTION CAN PASS SOME CURRENT BUG
 export const fetchTopDoctor = () => {
   return async (dispatch, getState) => {
     try {
-    } catch (e) {}
+      let res = await getTopDoctorHome("5");
+     
+      if (res && res.data.errorCode === 0) {
+        console.log("ST1 data to action ", res);
+        dispatch({
+          type: actionTypes.FETCH_DOCTOR_SUCCESS,
+          topDoctors: res.data.topDoctors,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_DOCTOR_FAILED,
+        });
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 };
 //EXAMPLE FUNCTION IN ACTION CAN PASS SOME CURRENT BUG
@@ -186,7 +201,6 @@ export const fetchAllUserFailed = () => ({
 export const saveUserSuccess = () => ({
   type: actionTypes.CREATE_USER_SUCCESS,
 });
-
 
 export const saveUserFailed = () => ({
   type: actionTypes.CREATE_USER_FAILED,

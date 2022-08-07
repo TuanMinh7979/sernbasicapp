@@ -42,7 +42,7 @@ class UserRedux extends Component {
       let arrGender = this.props.genderRedux;
       this.setState({
         genderArray: this.props.genderRedux,
-        gender: arrGender && arrGender.length > 0 ? arrGender[0].key : "",
+        gender: arrGender && arrGender.length > 0 ? arrGender[0].keyMap : "",
       });
     }
     if (prevProps.positionRedux !== this.props.positionRedux) {
@@ -51,7 +51,7 @@ class UserRedux extends Component {
       this.setState({
         positionArray: this.props.positionRedux,
         position:
-          arrPosition && arrPosition.length > 0 ? arrPosition[0].key : "",
+          arrPosition && arrPosition.length > 0 ? arrPosition[0].keyMap : "",
       });
     }
     if (prevProps.roleRedux !== this.props.roleRedux) {
@@ -60,7 +60,7 @@ class UserRedux extends Component {
 
       this.setState({
         roleArray: this.props.roleRedux,
-        role: arrRole && arrRole.length > 0 ? arrRole[0].key : "",
+        role: arrRole && arrRole.length > 0 ? arrRole[0].keyMap : "",
       });
     }
 
@@ -78,7 +78,7 @@ class UserRedux extends Component {
         role: "",
         avatar: "",
         action: CRUD_ACTIONS.CREATE,
-        previewImgUrl:""
+        previewImgUrl: "",
       });
     }
   }
@@ -136,6 +136,7 @@ class UserRedux extends Component {
   };
   hdlSaveUser = () => {
     let { action } = this.state;
+    console.log("State:  create user:", this.state);
     if (action === CRUD_ACTIONS.CREATE) {
       this.props.createUserRedux({
         email: this.state.email,
@@ -144,13 +145,19 @@ class UserRedux extends Component {
         lastName: this.state.lastName,
         address: this.state.address,
         phoneNumber: this.state.phoneNumber,
-        gender: this.state.gender === "M" ? 1 : 0,
+        gender: this.state.gender,
         roleId: this.state.role,
         positionId: this.state.position,
         avatar: this.state.avatar,
       });
     } else if (action === CRUD_ACTIONS.UPDATE) {
-      // console.log("__________________UPDATE USER REDUX_______________.......id in state:::" ,this.state.userId);
+      console.log(
+        "/////////////////////UPDATE USER REDUX_______________.......id in state:::",
+        this.state
+      );
+
+      console.log(this.state.role)
+      console.log(this.state.position)
       this.props.updateUserRedux({
         id: this.state.userId,
         email: this.state.email,
@@ -159,7 +166,7 @@ class UserRedux extends Component {
         lastName: this.state.lastName,
         address: this.state.address,
         phoneNumber: this.state.phoneNumber,
-        gender: this.state.gender === 1 ? "M" : "F",
+        gender: this.state.gender,
         roleId: this.state.role,
         positionId: this.state.position,
         avatar: this.state.avatar,
@@ -167,12 +174,13 @@ class UserRedux extends Component {
     }
   };
 
+
+
   hdlEditUser = (user) => {
     console.log("update user  info in pareeet: ,", user);
     let imageBase64 = "";
     if (user.image) {
-      imageBase64 = new Buffer(user.image, "base64").toString('binary');
-      
+      imageBase64 = new Buffer(user.image, "base64").toString("binary");
     }
 
     this.setState({
@@ -182,7 +190,7 @@ class UserRedux extends Component {
       lastName: user.lastName,
       address: user.address,
       phoneNumber: user.phoneNumber,
-      gender: user.gender === 1 ? "M" : "F",
+      gender: user.gender,
       role: user.roleId,
       position: user.positionId,
 
@@ -283,7 +291,7 @@ class UserRedux extends Component {
                     positions.length > 0 &&
                     positions.map((item, index) => {
                       return (
-                        <option key={index} value={item.key}>
+                        <option key={index} value={item.keyMap}>
                           {curLanguage === "vi" ? item.valueVi : item.valueEn}
                         </option>
                       );
@@ -301,7 +309,7 @@ class UserRedux extends Component {
                     roles.length > 0 &&
                     roles.map((item, index) => {
                       return (
-                        <option key={index} value={item.key}>
+                        <option key={index} value={item.keyMap}>
                           {curLanguage == "vi" ? item.valueVi : item.valueEn}
                         </option>
                       );
@@ -319,7 +327,7 @@ class UserRedux extends Component {
                     genders.length > 0 &&
                     genders.map((item, index) => {
                       return (
-                        <option key={index} value={item.key}>
+                        <option key={index} value={item.keyMap}>
                           {curLanguage === "vi" ? item.valueVi : item.valueEn}
                         </option>
                       );

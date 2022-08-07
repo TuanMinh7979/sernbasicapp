@@ -36,7 +36,7 @@ class TableManageUser extends Component {
   };
 
   hdlEditUserInChild = (user) => {
-    console.log("hdledit from child")
+    console.log("===================hdledit from child, ", user)
     this.props.hdlEditUser(user);
   };
 

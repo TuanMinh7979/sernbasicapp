@@ -115,10 +115,10 @@ let createNewUser = (data) => {
         lastName: data.lastName,
         address: data.address,
         phoneNumber: data.phoneNumber,
-        gender: data.gender === 1 ? true : false,
+        gender: data.gender,
         roleId: data.roleId,
         positionId: data.positionId,
-        image: data.avatar
+        image: data.avatar,
       });
       resolve({
         errCode: 0,
@@ -193,10 +193,12 @@ let updateUserService = async (data) => {
       user.address = userData.address;
       user.phoneNumber = userData.phoneNumber;
       user.gender = userData.gender;
-      user.roleId = userData.role;
-      user.positionId = userData.position;
-      user.image= userData.avatar
-      
+      user.roleId = userData.roleId;
+      user.positionId = userData.positionId;
+      if (userData.avatar) {
+        user.image = userData.avatar;
+      }
+
       await db.User.update({ ...user }, { where: { id: userId } });
     }
   } catch (e) {

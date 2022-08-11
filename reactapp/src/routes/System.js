@@ -18,7 +18,7 @@ class System extends Component {
               <Route path="/system/user-manage" component={UserManage} />
               <Route path="/system/user-redux" component={UserRedux} />
               <Route path="/system/user-exam" component={exam} />
-           
+         
               <Route
                 component={() => {
                   return <Redirect to={systemMenuPath} />;
@@ -30,8 +30,7 @@ class System extends Component {
       </React.Fragment>
     );
   }
-}
-
+} 
 const mapStateToProps = (state) => {
   return {
     systemMenuPath: state.app.systemMenuPath,

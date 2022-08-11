@@ -9,7 +9,6 @@ import specialtyImg from "../../../assets/images/star2.jpg";
 
 class Specialty extends Component {
   render() {
- 
     return (
       <div className="section-content ">
         <div className="section-header">
@@ -19,27 +18,63 @@ class Specialty extends Component {
 
         <Slider {...this.props.settings}>
           <div className="item">
-            <img src={specialtyImg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${specialtyImg})`,
+               
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${specialtyImg})`,
+               
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${specialtyImg})`,
+               
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${specialtyImg})`,
+               
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${specialtyImg})`,
+               
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={specialtyImg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${specialtyImg})`,
+               
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
         </Slider>

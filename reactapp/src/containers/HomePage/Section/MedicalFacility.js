@@ -17,27 +17,63 @@ class MedicalFacility extends Component {
 
         <Slider {...this.props.settings}>
           <div className="item">
-            <img src={csytnbimg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${csytnbimg})`,
+              
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={csytnbimg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${csytnbimg})`,
+              
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={csytnbimg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${csytnbimg})`,
+              
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={csytnbimg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${csytnbimg})`,
+              
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={csytnbimg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${csytnbimg})`,
+              
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={csytnbimg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${csytnbimg})`,
+              
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
         </Slider>

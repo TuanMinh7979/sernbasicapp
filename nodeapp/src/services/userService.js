@@ -96,6 +96,7 @@ let getUser = (userId) => {
 };
 
 let createNewUser = (data) => {
+  console.log("DATA WHEN CREATE NEW USER IN SERVER", data);
   return new Promise(async (resolve, reject) => {
     try {
       let check = await isEmailExist(data.email);

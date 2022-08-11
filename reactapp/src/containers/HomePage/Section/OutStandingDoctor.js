@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import outstandingdoctorimg from "../../../assets/images/outdoctor.png";
 import "./Specialty.scss";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -9,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 
 import "slick-carousel/slick/slick-theme.css";
 import * as actions from "../../../store/actions";
+
 class OutStandingDoctor extends Component {
   constructor(props) {
     super(props);
@@ -49,17 +48,27 @@ class OutStandingDoctor extends Component {
           {topDoctors &&
             topDoctors.length > 0 &&
             topDoctors.map((item, index) => {
+              let imageBase64 = "";
+              if (item.image) {
+                console.log("IMAGE ", item.image);
+                imageBase64 = new Buffer(item.image, "baes64").toString(
+                  "binary"
+                );
+              }
               let nameVi = `${item.positionData.valueVi}, ${item.firstName}, ${item.lastName}`;
               let nameEn = `${item.positionData.valueEn}, ${item.firstName}, ${item.lastName}`;
               console.log("ITEMITEM: ", item);
               return (
                 <div className="item">
-                  <div>
-                    <img src={outstandingdoctorimg} />
-                  </div>
-                  <div>
-                    <h3>{language === "vi" ? nameVi : nameEn}</h3>
-                  </div>
+                  <div
+                    className="img"
+                    style={{
+                      backgroundImage: `url(${imageBase64})`,
+                     
+                    }}
+                  ></div>
+
+                  <h3>{language === "vi" ? nameVi : nameEn}</h3>
                 </div>
               );
             })}

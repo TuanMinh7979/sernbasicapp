@@ -24,15 +24,33 @@ class HandBook extends Component {
 
         <Slider {...settings}>
           <div className="item">
-            <img src={handbookImg} />
+            <div
+              className="img"
+              style={{
+                backgroundImage: `url(${handbookImg})`,
+              
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={handbookImg} />
+          <div
+              className="img"
+              style={{
+                backgroundImage: `url(${handbookImg})`,
+              
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
           <div className="item">
-            <img src={handbookImg} />
+          <div
+              className="img"
+              style={{
+                backgroundImage: `url(${handbookImg})`,
+              
+              }}
+            ></div>
             <h3>asdfasdf</h3>
           </div>
         </Slider>

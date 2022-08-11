@@ -29,9 +29,13 @@
     padding: 20px 20px;
     flex-direction: column;
 
-    img {
-      height: 100px;
+    .img {
+      height: 120px;
       border: 1px solid green;
+
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   }
   .btn-section {

@@ -3,7 +3,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./TableManageUser.scss";
 import * as actions from "../../../store/actions";
+import MarkdownIt from "markdown-it";
+import MdEditor from "react-markdown-editor-lite";
+// import MdE
 
+import "react-markdown-editor-lite/lib/index.css";
+
+const mdParser = new MarkdownIt();
+function handleEditorChange({ html, text }) {
+  console.log("hdleEdittor change", html, text);
+}
 class TableManageUser extends Component {
   constructor(props) {
     super(props);
@@ -36,14 +45,16 @@ class TableManageUser extends Component {
   };
 
   hdlEditUserInChild = (user) => {
-    console.log("===================hdledit from child, ", user)
+    console.log("===================hdledit from child, ", user);
     this.props.hdlEditUser(user);
   };
 
   render() {
     console.log("_________________TABLE MANAGE USER RERENDER");
     let usersData = this.state.userRedux;
-    return (
+   
+      return (
+        <>
       <table>
         <thead>
           <tr>
@@ -85,7 +96,14 @@ class TableManageUser extends Component {
             })}
         </tbody>
       </table>
-    );
+      <MdEditor
+        style={{ height: "500px" }}
+        renderHTML={(text) => mdParser.render(text)}
+        onChange={handleEditorChange}
+      ></MdEditor>
+      </>
+      );
+    
   }
 }
 

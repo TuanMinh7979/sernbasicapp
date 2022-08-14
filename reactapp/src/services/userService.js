@@ -33,6 +33,14 @@ const updateUserService = (user) => {
 const getTopDoctorHome = (limit) => {
   return axios.get(`/api/top-doctor-home?limit=${limit}`);
 };
+
+const getAllDoctor = () => {
+  return axios.get("/api/get-all-doctor");
+};
+
+const saveDetailDoctorService=(data)=>{
+  return axios.post('/api/save-info-doctor', data)
+}
 export {
   hdlLoginApi,
   getUser,
@@ -40,5 +48,7 @@ export {
   deleteUserService,
   createUserService,
   updateUserService,
-  getTopDoctorHome
+  getTopDoctorHome,
+  getAllDoctor,
+  saveDetailDoctorService
 };

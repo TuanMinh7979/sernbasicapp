@@ -9,31 +9,34 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
 
-  
-
       contentHTML: {
         allowNull: false,
-        type: Sequelize.TEXT('long'),
+        type: Sequelize.TEXT("long"),
       },
-      contentMarkDown : {
+      contentMarkDown: {
         allowNull: false,
-        type: Sequelize.TEXT('long'),
+        type: Sequelize.TEXT("long"),
       },
       description: {
         allowNull: false,
-        type: Sequelize.TEXT('long'),
+        type: Sequelize.TEXT("long"),
       },
-       doctorId: {
-        allowNull: false,
+      doctorId: {
+        allowNull: true,
         type: Sequelize.INTEGER,
       },
-       specialtyId: {
-        allowNull: false,
+      specialtyId: {
+        allowNull: true,
         type: Sequelize.INTEGER,
       },
-       clinicId: {
-        allowNull: false,
+      clinicId: {
+        allowNull: true,
         type: Sequelize.INTEGER,
+      },
+
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,

@@ -1,9 +1,19 @@
 import actionTypes from "./actionTypes";
-import { getAllCodeService, getUser } from "../../services/userService";
-import { createUserService } from "../../services/userService";
-import { deleteUserService } from "../../services/userService";
-import { updateUserService } from "../../services/userService";
-import { getTopDoctorHome } from "../../services/userService";
+// import { getAllCodeService, getUser } from "../../services/userService";
+// import { createUserService } from "../../services/userService";
+// import { deleteUserService } from "../../services/userService";
+// import { updateUserService } from "../../services/userService";
+// import { getTopDoctorHome } from "../../services/userService";
+import {
+  getAllCodeService,
+  getUser,
+  createUserService,
+  deleteUserService,
+  updateUserService,
+  getTopDoctorHome,
+  getAllDoctor,
+  saveDetailDoctorService
+} from "../../services/userService";
 // import {}
 import { toast } from "react-toastify";
 export const fetchGenderStart = () => {
@@ -79,9 +89,8 @@ export const fetchRoleStart = () => {
 
 export const createUserAction = (data) => {
   return async (dispatch, getState) => {
-  
     try {
-      console.log("DATA in action", data)
+      console.log("DATA in action", data);
       let res = await createUserService(data);
       if (res) {
         toast.success("create new user success");
@@ -172,7 +181,7 @@ export const fetchTopDoctor = () => {
   return async (dispatch, getState) => {
     try {
       let res = await getTopDoctorHome("5");
-     
+
       if (res && res.data.errorCode === 0) {
         console.log("ST1 data to action ", res);
         dispatch({
@@ -204,4 +213,56 @@ export const saveUserSuccess = () => ({
 
 export const saveUserFailed = () => ({
   type: actionTypes.CREATE_USER_FAILED,
+});
+
+export const fetchAllDoctor = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllDoctor();
+
+      if (res && res.data.errorCode === 0) {
+        console.log("Fetch all doctor success", res.data.allDoctor);
+        dispatch({
+          type: actionTypes.FETCH_ALL_DOCTORS_SUCCESS,
+          allDoctor: res.data.allDoctor,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_ALL_DOCTORS_FAILED,
+        });
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+export const saveDetailDoctor =  (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await saveDetailDoctorService(data);
+
+      if (res && res.data.errorCode === 0) {
+        toast.success("save info detail success");
+        dispatch({
+          type: actionTypes.CREATE_DETAIL_DOCTOR_SUCCESS,
+         
+        });
+      } else {
+        toast.error("save info detail failed");
+        dispatch({
+          type: actionTypes.CREATE_DETAIL_DOCTOR_FAILED,
+        });
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
+export const fetchAllDoctorSuccess = (data) => ({
+  type: actionTypes.FETCH_ALL_DOCTORS_SUCCESS,
+  users: data,
+});
+export const fetchAllDoctorFailed = () => ({
+  type: actionTypes.FETCH_ALL_DOCTORS_FAILED,
 });
